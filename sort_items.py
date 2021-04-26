@@ -40,6 +40,7 @@ def read_rows(file_name, row_number):
 
     return row
 
+
 def selection_sort(number_array, direction="ascending"):
     """
     Sorts and returns selected numeric data with Selection Sort.
@@ -63,26 +64,32 @@ def selection_sort(number_array, direction="ascending"):
     return number_array
 
 
-def bubble_sort(number_array):
+def bubble_sort(number_array, direction="ascending"):
     """
     Sorts and returns selected numeric data with Bubble Sort.
 
     :param number_array: (list,int), list with numeric array
     :return: (list, int), sorted numeric array
     """
+    for idx in range(len(number_array) - 1):
+        for inner_idx in range(0, len(number_array) - 1 - idx):
+            if number_array[inner_idx] > number_array[inner_idx + 1]:
+                number_array[inner_idx], number_array[inner_idx + 1] = number_array[inner_idx + 1], number_array[inner_idx]
 
+    return number_array
 
 
 def main():
     """This is the driver function"""
 
     # # Nacitani dat 1
-    # file_name_1 = "numbers_one.csv"
-    # row_of_numbers = read_row(file_name_1)
+    file_name_1 = "numbers_one.csv"
+    row_of_numbers = read_row(file_name_1)
     # print(row_of_numbers)
 
+    # --------------------------------------------------------
     # Ukol: Selection Sort
-    # ordered_list_1 = selection_sort(row_of_numbers, "ascending")
+    ordered_list_1 = selection_sort(row_of_numbers, "ascending")
     # print(ordered_list_1)
 
     # Ukol: Selection Sort - se smerem razeni
@@ -95,6 +102,7 @@ def main():
     one_row_of_numbers = read_rows(file_name_2, row_number)
     # print(one_row_of_numbers)
 
+    # --------------------------------------------------------
     # Ukol: Bubble Sort
     ordered_list_2 = bubble_sort(one_row_of_numbers)
     print(ordered_list_2)
